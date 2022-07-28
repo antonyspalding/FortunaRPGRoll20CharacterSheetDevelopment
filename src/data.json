@@ -1,0 +1,317 @@
+{
+  "traitlist": [
+    { "title": "character_trait_fortitude", "attribute": "fortitude", "image": "Fortitude"}, 
+    { "title": "character_trait_perceptio", "attribute": "perceptio", "image": "Perceptio"}, 
+    { "title": "character_trait_kharisma", "attribute": "kharisma", "image": "Kharisma"}, 
+    { "title": "character_trait_civitas", "attribute": "civitas", "image": "Civitas"},
+    { "title": "character_trait_religio_pagan", "attribute": "religiopagan", "image": "Religio_Pagan"},
+    { "title": "character_trait_religio_christian", "attribute": "religiochristian", "image": "Religio_Christian"}
+  ],
+  "bondlist": [
+    { "title": "character_bond_slaves", "attribute": "slaves", "image": "Bond_Class" }, 
+    { "title": "character_bond_urbanpoor", "attribute": "urbanpoor", "image": "Bond_Class"}, 
+    { "title": "character_bond_freeborn", "attribute": "freeborn", "image": "Bond_Class"}, 
+    { "title": "character_bond_legio", "attribute": "legio", "image": "Bond_Class"}, 
+    { "title": "character_bond_notarii", "attribute": "notarii", "image": "Bond_Class"}, 
+    { "title": "character_bond_curiales", "attribute": "curiales", "image": "Bond_Class"}, 
+    { "title": "character_bond_senator", "attribute": "senator", "image": "Bond_Class"}, 
+    { "title": "character_bond_virillustris", "attribute": "virillustris", "image": "Bond_Class"}, 
+    { "title": "character_bond_imperial", "attribute": "imperial", "image": "Bond_Class"}
+  ],
+  "conditionlist": [
+    {
+      "negative": {"title": "character_condition_rage", "attribute": "rage"}, 
+      "positive": {"title": "character_condition_peaceful", "attribute": "peaceful"}
+    },
+    {
+      "negative": {"title": "character_condition_reckless", "attribute": "reckless"}, 
+      "positive": {"title": "character_condition_prudent", "attribute": "prudent"}
+    },
+    {
+      "negative": {"title": "character_condition_obsessed", "attribute": "obsessed"}, 
+      "positive": {"title": "character_condition_lucid", "attribute": "lucid"}
+    },
+    {
+      "negative": {"title": "character_condition_paranoid", "attribute": "paranoid"}, 
+      "positive": {"title": "character_condition_trustful", "attribute": "trustful"}
+    },
+    {
+      "negative": {"title": "character_condition_anxious", "attribute": "anxious"}, 
+      "positive": {"title": "character_condition_calm", "attribute": "calm"}
+    },
+    {
+      "negative": {"title": "character_condition_listless", "attribute": "listless"}, 
+      "positive": {"title": "character_condition_active", "attribute": "active"}
+    },
+    {
+      "negative": {"title": "character_condition_despair", "attribute": "despair"}, 
+      "positive": {"title": "character_condition_hopeful", "attribute": "hopeful"}
+    },
+    {
+      "negative": {"title": "character_condition_detached", "attribute": "detached"}, 
+      "positive": {"title": "character_condition_connected", "attribute": "connected"}
+    }
+  ],
+  "playbooks": [
+    {
+      "title" : "general_playbook_agente",
+      "code" : "agente",
+      "headerimageurl" : "https://raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/agente_Header.svg",
+      "moves" : [
+        {
+          "title" : "playbook_agente_move1_title",
+          "trait" : "perceptio"
+        }, {
+          "title" : "playbook_agente_move2_title",
+          "trait" : "civitas"
+        }, {
+          "title" : "playbook_agente_move3_title",
+          "trait" : "perceptio"
+        }, {
+          "title" : "playbook_agente_move4_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_agente_move5_title",
+          "trait" : ""
+        }
+      ], 
+      "personalties" : [
+        {
+          "attribute" : "personaltieagente1",
+          "pro" : "playbook_agente_personal_tie1_pro",
+          "epi" : "playbook_agente_personal_tie1_epi"
+        }, {
+          "attribute" : "personaltieagente2",
+          "pro" : "playbook_agente_personal_tie2_pro",
+          "epi" : "playbook_agente_personal_tie2_epi"
+        }, {
+          "attribute" : "personaltieagente3",
+          "pro" : "playbook_agente_personal_tie3_pro",
+          "epi" : "playbook_agente_personal_tie3_epi"
+        }
+      ]
+    }, {
+      "title" : "general_playbook_auriga",
+      "code" : "auriga",
+      "headerimageurl" : "https://raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/auriga_Header.svg",
+      "moves" : [
+        {
+          "title" : "playbook_auriga_move1_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_auriga_move2_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_auriga_move3_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_auriga_move4_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_auriga_move5_title",
+          "trait" : ""
+        }
+      ], 
+      "personalties" : [
+        {
+          "attribute" : "personaltieauriga1",
+          "pro" : "playbook_auriga_personal_tie1_pro",
+          "epi" : "playbook_auriga_personal_tie1_epi"
+        }, {
+          "attribute" : "personaltieauriga2",
+          "pro" : "playbook_auriga_personal_tie2_pro",
+          "epi" : "playbook_auriga_personal_tie2_epi"
+        }, {
+          "attribute" : "personaltieauriga3",
+          "pro" : "playbook_auriga_personal_tie3_pro",
+          "epi" : "playbook_auriga_personal_tie3_epi"
+        }
+      ]
+    }, {
+      "title" : "general_playbook_decurion",
+      "code" : "decurion",
+      "headerimageurl" : "https://raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/decurion_Header.svg",
+      "moves" : [
+        {
+          "title" : "playbook_decurion_move1_title",
+          "trait" : "fortitude"
+        }, {
+          "title" : "playbook_decurion_move2_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_decurion_move3_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_decurion_move4_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_decurion_move5_title",
+          "trait" : ""
+        }
+      ], 
+      "personalties" : [
+        {
+          "attribute" : "personaltiedecurion1",
+          "pro" : "playbook_decurion_personal_tie1_pro",
+          "epi" : "playbook_decurion_personal_tie1_epi"
+        }, {
+          "attribute" : "personaltiedecurion2",
+          "pro" : "playbook_decurion_personal_tie2_pro",
+          "epi" : "playbook_decurion_personal_tie2_epi"
+        }, {
+          "attribute" : "personaltiedecurion3",
+          "pro" : "playbook_decurion_personal_tie3_pro",
+          "epi" : "playbook_decurion_personal_tie3_epi"
+        }
+      ]
+    }, {
+      "title" : "general_playbook_dux",
+      "code" : "dux",
+      "headerimageurl" : "https://raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/dux_Header.svg",
+      "moves" : [
+        {
+          "title" : "playbook_dux_move1_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_dux_move2_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_dux_move3_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_dux_move4_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_dux_move5_title",
+          "trait" : ""
+        }
+      ], 
+      "personalties" : [
+        {
+          "attribute" : "personaltiedux1",
+          "pro" : "playbook_dux_personal_tie1_pro",
+          "epi" : "playbook_dux_personal_tie1_epi"
+        }, {
+          "attribute" : "personaltiedux2",
+          "pro" : "playbook_dux_personal_tie2_pro",
+          "epi" : "playbook_dux_personal_tie2_epi"
+        }, {
+          "attribute" : "personaltiedux3",
+          "pro" : "playbook_dux_personal_tie3_pro",
+          "epi" : "playbook_dux_personal_tie3_epi"
+        }
+      ]
+    }, {
+      "title" : "general_playbook_episcopus",
+      "code" : "episcopus",
+      "headerimageurl" : "https://raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/episcopus_Header.svg",
+      "moves" : [
+        {
+          "title" : "playbook_episcopus_move1_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_episcopus_move2_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_episcopus_move3_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_episcopus_move4_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_episcopus_move5_title",
+          "trait" : ""
+        }
+      ], 
+      "personalties" : [
+        {
+          "attribute" : "personaltieepiscopus1",
+          "pro" : "playbook_episcopus_personal_tie1_pro",
+          "epi" : "playbook_episcopus_personal_tie1_epi"
+        }, {
+          "attribute" : "personaltieepiscopus2",
+          "pro" : "playbook_episcopus_personal_tie2_pro",
+          "epi" : "playbook_episcopus_personal_tie2_epi"
+        }, {
+          "attribute" : "personaltieepiscopus3",
+          "pro" : "playbook_episcopus_personal_tie3_pro",
+          "epi" : "playbook_episcopus_personal_tie3_epi"
+        }
+      ]
+    }, {
+      "title" : "general_playbook_evocatus",
+      "code" : "evocatus",
+      "headerimageurl" : "https://raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/evocatus_Header.svg",
+      "moves" : [
+        {
+          "title" : "playbook_evocatus_move1_title",
+          "trait" : "civitas"
+        }, {
+          "title" : "playbook_evocatus_move2_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_evocatus_move3_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_evocatus_move4_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_evocatus_move5_title",
+          "trait" : ""
+        }
+      ], 
+      "personalties" : [
+        {
+          "attribute" : "personaltieevocatus1",
+          "pro" : "playbook_evocatus_personal_tie1_pro",
+          "epi" : "playbook_evocatus_personal_tie1_epi"
+        }, {
+          "attribute" : "personaltieevocatus2",
+          "pro" : "playbook_evocatus_personal_tie2_pro",
+          "epi" : "playbook_evocatus_personal_tie2_epi"
+        }, {
+          "attribute" : "personaltieevocatus3",
+          "pro" : "playbook_evocatus_personal_tie3_pro",
+          "epi" : "playbook_evocatus_personal_tie3_epi"
+        }
+      ]
+    }, {
+      "title" : "general_playbook_senator",
+      "code" : "senator",
+      "headerimageurl" : "https://raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/senator_Header.svg",
+      "moves" : [
+        {
+          "title" : "playbook_senator_move1_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_senator_move2_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_senator_move3_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_senator_move4_title",
+          "trait" : ""
+        }, {
+          "title" : "playbook_senator_move5_title",
+          "trait" : ""
+        }
+      ], 
+      "personalties" : [
+        {
+          "attribute" : "personaltiesenator1",
+          "pro" : "playbook_senator_personal_tie1_pro",
+          "epi" : "playbook_senator_personal_tie1_epi"
+        }, {
+          "attribute" : "personaltiesenator2",
+          "pro" : "playbook_senator_personal_tie2_pro",
+          "epi" : "playbook_senator_personal_tie2_epi"
+        }, {
+          "attribute" : "personaltiesenator3",
+          "pro" : "playbook_senator_personal_tie3_pro",
+          "epi" : "playbook_senator_personal_tie3_epi"
+        }
+      ]
+    }
+  ]
+}

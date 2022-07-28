@@ -1,0 +1,896 @@
+/*---- Temp / Miscellaneous ---- Hide playbooks we don't want to show ----*/
+/*
+.main section.navigation .navigationplaybook button[name="act_auriga"] {
+  display: none;
+}
+*/
+@import url("https://fonts.googleapis.com/css?family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap");
+.main {
+  width: 100%;
+  height: auto;
+  font-family: "Crimson Pro";
+  font-size: 12pt;
+  /*----------------- GENERAL CSS ------------------*/
+  /*---- Headings ----*/
+  /*---- Text emphasis display ----*/
+  /*---- Images ----*/
+  /*------------ Traits and Bonds three stack radios ------------*/
+  /*-- Assumptions, 3 radio options, values 0,1,2 in ascending order and value 0 is empty and the beggining and default --*/
+  /*-- Need to make the default radio buttons invisible so we only see the spans underneath, 
+  setup the spans with their images and hide them,
+  show the span of the selected radio, 
+  move the selected radio below the others,
+  move the next radio above so that it is selected if the space is clicked,
+  default the first radio to the top so it is selected next if the last radio is selected,
+  if the item is unchanged by the player set the value="2" input to the first one selected,
+  set default image at the bottom
+  and set the label to encompass the set of three --*/
+  /*---- Pathos Three stack radios ----*/
+  /*---- Progress Bar ----*/
+  /*- Set the empty image and then input -*/
+  /*- Set the full image -*/
+  /*- Set the input -*/
+  /*- Set the change after the selected input image -*/
+  /*- Set the last image selected and empty rest -*/
+  /*- Set the last input and span tweaks -*/
+  /*---- Resilience Progress Bar ----*/
+  /*---- Playbook CSS ----*/
+  /*---- Areas that switch : 1. personal ties; 2. moves; 3. cohorts; 4. status; 5. experience (improvement); 6. legacy ----*/
+  /*---- Tab CSS ----*/
+  /*------------- Section-specific CSS -------------*/
+}
+.main .heading3, .main .characterviewer label.heading3, .main .heading4, .main .heading5, .main .heading6, .main .heading7 {
+  font-size: 18pt;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.main .heading4 {
+  color: #d1232a;
+}
+.main .heading5 {
+  color: #a8a1a1;
+}
+.main .heading6 {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid;
+}
+.main .heading7 {
+  font-size: 15pt;
+}
+.main .descriptor1 {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 15pt;
+}
+.main .descriptor2 {
+  color: #d1232a;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.main .descriptor3 {
+  font-size: 12pt;
+  text-transform: none;
+  font-weight: 400;
+}
+.main .highlight1 {
+  font-weight: 600;
+  font-style: italic;
+  text-transform: capitalize;
+}
+.main .highlight2 {
+  font-style: italic;
+}
+.main .highlight3 {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.main .highlight4 {
+  font-weight: 600;
+}
+.main p {
+  font-family: "Crimson Pro";
+  font-size: 12pt;
+  line-height: 20px;
+}
+.main label {
+  font-size: 12pt;
+  font-weight: 400;
+}
+.main textarea {
+  width: 90%;
+  height: 85%;
+  min-height: 100px;
+}
+.main .section {
+  padding: 3%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 0 0 10px 0;
+}
+.main .circleIcon {
+  width: 20px;
+  vertical-align: text-bottom;
+}
+.main .playbookHeaderImage {
+  width: 100%;
+  display: none;
+}
+.main input.playbooktoggle[value=agente] ~ section.header.section img.playbookHeaderImage.agente,
+.main input.playbooktoggle[value=auriga] ~ section.header.section img.playbookHeaderImage.auriga,
+.main input.playbooktoggle[value=decurion] ~ section.header.section img.playbookHeaderImage.decurion,
+.main input.playbooktoggle[value=dux] ~ section.header.section img.playbookHeaderImage.dux,
+.main input.playbooktoggle[value=episcopus] ~ section.header.section img.playbookHeaderImage.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ section.header.section img.playbookHeaderImage.evocatus,
+.main input.playbooktoggle[value=senator] ~ section.header.section img.playbookHeaderImage.senator {
+  display: inline-block;
+}
+.main input[type=radio].threestackradio {
+  opacity: 0;
+  display: inline-block;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+}
+.main input[type=radio].threestackradio:checked {
+  z-index: 0;
+}
+.main input[type=radio].threestackradio:checked + span {
+  z-index: 0;
+  display: inline-block;
+}
+.main input[type=radio].threestackradio + span {
+  background-size: 20px 20px;
+  z-index: 0;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+}
+.main input[value="1"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Fleeting.svg);
+}
+.main input[value="2"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Enduring.svg);
+}
+.main input[value="0"].threestackradio {
+  z-index: 3;
+}
+.main input[value="0"].threestackradio:checked ~ input[value="1"].threestackradio {
+  z-index: 5;
+}
+.main input[value="0"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle.svg);
+}
+.main input[value="1"].threestackradio:checked ~ input[value="2"].threestackradio {
+  z-index: 5;
+}
+.main img.circleIcon.threestackradio {
+  z-index: 0;
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+}
+.main label.threestackradio {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin-bottom: 0px;
+  padding-right: 0px;
+}
+.main .pathos {
+  /*---- Thresholds need different images ----*/
+  /*---- Last Label needs to have different images ----*/
+}
+.main .pathos span.heading4 {
+  padding-right: 3px;
+}
+.main .pathos label.threestackradio {
+  width: 30px;
+  margin-left: -3px;
+}
+.main .pathos input[type=radio].threestackradio {
+  width: 30px;
+}
+.main .pathos input[type=radio].threestackradio + span {
+  width: 30px;
+  background-size: 30px 20px;
+}
+.main .pathos input[value="1"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Fleeting_ProgressBar.svg);
+}
+.main .pathos input[value="2"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Enduring_ProgressBar.svg);
+}
+.main .pathos input[value="0"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle_ProgressBar.svg);
+}
+.main .pathos img.circleIcon.threestackradio {
+  width: 30px;
+}
+.main .pathos label:nth-child(7).threestackradio {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle_Threshold_ProgressBar.svg);
+  background-size: 30px 20px;
+  position: relative;
+  top: 3px;
+  left: 0px;
+}
+.main .pathos label:nth-child(7).threestackradio img {
+  display: none;
+}
+.main .pathos label:nth-child(7).threestackradio input[type=radio].threestackradio {
+  top: 0;
+}
+.main .pathos label:nth-child(7).threestackradio input[type=radio].threestackradio + span {
+  top: 0;
+}
+.main .pathos label:nth-child(7).threestackradio input[value="1"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Fleeting_Threshold_ProgressBar.svg);
+}
+.main .pathos label:nth-child(7).threestackradio input[value="2"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Enduring_Threshold_ProgressBar.svg);
+}
+.main .pathos label:nth-child(7).threestackradio input[value="0"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle_Threshold_ProgressBar.svg);
+}
+.main .pathos label:last-of-type.threestackradio {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle_Threshold.svg);
+  background-size: 30px 20px;
+  position: relative;
+  top: 3px;
+  left: -5px;
+}
+.main .pathos label:last-of-type.threestackradio img {
+  display: none;
+}
+.main .pathos label:last-of-type.threestackradio input[type=radio].threestackradio {
+  top: 0;
+}
+.main .pathos label:last-of-type.threestackradio input[type=radio].threestackradio + span {
+  top: 0;
+}
+.main .pathos label:last-of-type.threestackradio input[value="1"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Fleeting_Threshold.svg);
+}
+.main .pathos label:last-of-type.threestackradio input[value="2"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Enduring_Threshold.svg);
+}
+.main .pathos label:last-of-type.threestackradio input[value="0"].threestackradio + span {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle_Threshold.svg);
+}
+.main span.progressbar.progressbarempty {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/clear.svg);
+  background-size: 20px 20px;
+  width: 20px;
+  margin-left: 0;
+  opacity: 0;
+}
+.main input.progressbar.progressbarempty {
+  width: 20px;
+  margin-left: 0;
+  display: none;
+  opacity: 0;
+}
+.main span.progressbar {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Enduring_ProgressBar.svg);
+  background-size: 30px 20px;
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+  margin-left: -3px;
+  margin-bottom: -4px;
+}
+.main input[type=radio].progressbar {
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  margin-left: -3px;
+  top: 24px;
+}
+.main input[type=radio].progressbar:checked + span.progressbar ~ span.progressbar {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle_ProgressBar.svg);
+}
+.main input[type=radio].progressbar:checked + span.progressbar ~ span.progressbar:last-of-type {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle.svg);
+  background-size: 20px 20px;
+  width: 20px;
+}
+.main input[type=radio].progressbar:last-of-type + span {
+  width: 20px;
+  background-size: 20px 20px;
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Enduring.svg);
+}
+.main input[type=radio].progressbar:last-of-type {
+  width: 20px;
+}
+.main .improvement button, .main .resilience button, .main .trauma button, .main .cohort button, .main .freedom button {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/clear.svg);
+  background-size: 20px 20px;
+  display: inline-block;
+  padding: 0;
+  vertical-align: text-bottom;
+  position: relative;
+  top: 1px;
+  margin-left: 7px;
+}
+.main .prgressbarcontainer {
+  position: relative;
+  margin: 2px 0 15px 0;
+}
+.main .prgressbarcontainer input[type=radio].progressbar {
+  top: 2px;
+}
+.main .prgressbarcontainer input[type=radio].progressbarempty {
+  width: 0;
+}
+.main .prgressbarcontainer span.progressbar.progressbarempty {
+  width: 0;
+}
+.main .resilience span.progressbar.threshold {
+  position: relative;
+  top: 1px;
+}
+.main .resilience span.progressbar.threshold img.circleIcon {
+  width: 30px;
+  height: 20px;
+}
+.main .resilience span.progressbar.thresholdfinal {
+  position: relative;
+  top: 1px;
+}
+.main .resilience span.progressbar.thresholdfinal img.circleIcon {
+  width: 20px;
+  height: 20px;
+}
+.main input.playbooktoggle[value=agente] ~ .navigation .navigationplaybook button[name=act_agente],
+.main input.playbooktoggle[value=auriga] ~ .navigation .navigationplaybook button[name=act_auriga],
+.main input.playbooktoggle[value=decurion] ~ .navigation .navigationplaybook button[name=act_decurion],
+.main input.playbooktoggle[value=dux] ~ .navigation .navigationplaybook button[name=act_dux],
+.main input.playbooktoggle[value=episcopus] ~ .navigation .navigationplaybook button[name=act_episcopus],
+.main input.playbooktoggle[value=evocatus] ~ .navigation .navigationplaybook button[name=act_evocatus],
+.main input.playbooktoggle[value=senator] ~ .navigation .navigationplaybook button[name=act_senator] {
+  background-color: white;
+}
+.main span.descriptor3.agente, .main span.descriptor3.auriga, .main span.descriptor3.decurion, .main span.descriptor3.dux, .main span.descriptor3.episcopus, .main span.descriptor3.evocatus, .main span.descriptor3.senator {
+  display: none;
+}
+.main input.playbooktoggle[value=agente] ~ .tabcharacter .tabcharactermain section.description.section span.descriptor3.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabcharacter .tabcharactermain section.description.section span.descriptor3.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabcharacter .tabcharactermain section.description.section span.descriptor3.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabcharacter .tabcharactermain section.description.section span.descriptor3.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabcharacter .tabcharactermain section.description.section span.descriptor3.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabcharacter .tabcharactermain section.description.section span.descriptor3.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabcharacter .tabcharactermain section.description.section span.descriptor3.senator {
+  display: block;
+}
+.main section.moves .moveitem, .main section.moves > input {
+  display: none;
+}
+.main section.moves.section > input:checked {
+  display: block;
+}
+.main section.moves.section > input:checked + .moveitem {
+  display: block;
+}
+.main input.playbooktoggle[value=agente] ~ .tabcharacter .tabcharactermain section.moves.section input.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabcharacter .tabcharactermain section.moves.section input.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabcharacter .tabcharactermain section.moves.section input.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabcharacter .tabcharactermain section.moves.section input.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabcharacter .tabcharactermain section.moves.section input.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabcharacter .tabcharactermain section.moves.section input.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabcharacter .tabcharactermain section.moves.section input.senator {
+  display: block;
+}
+.main input.playbooktoggle[value=agente] ~ .tabcharacter .tabcharactermain section.moves.section .moveitem.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabcharacter .tabcharactermain section.moves.section .moveitem.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabcharacter .tabcharactermain section.moves.section .moveitem.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabcharacter .tabcharactermain section.moves.section .moveitem.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabcharacter .tabcharactermain section.moves.section .moveitem.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabcharacter .tabcharactermain section.moves.section .moveitem.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabcharacter .tabcharactermain section.moves.section .moveitem.senator {
+  display: block;
+}
+.main .cohort.agente, .main .cohort.auriga, .main .cohort.decurion, .main .cohort.dux, .main .cohort.episcopus, .main .cohort.evocatus, .main .cohort.senator {
+  display: none;
+}
+.main input.playbooktoggle[value=agente] ~ .tabcharacter .tabcharactermain section.cohort.section .cohort.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabcharacter .tabcharactermain section.cohort.section .cohort.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabcharacter .tabcharactermain section.cohort.section .cohort.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabcharacter .tabcharactermain section.cohort.section .cohort.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabcharacter .tabcharactermain section.cohort.section .cohort.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabcharacter .tabcharactermain section.cohort.section .cohort.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabcharacter .tabcharactermain section.cohort.section .cohort.senator {
+  display: block;
+}
+.main .status.agente, .main .status.auriga, .main .status.decurion, .main .status.dux, .main .status.episcopus, .main .status.evocatus, .main .status.senator {
+  display: none;
+}
+.main input.playbooktoggle[value=agente] ~ .tabadvancement .tabadvancementmain section .status.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabadvancement .tabadvancementmain section .status.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabadvancement .tabadvancementmain section .status.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabadvancement .tabadvancementmain section .status.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabadvancement .tabadvancementmain section .status.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabadvancement .tabadvancementmain section .status.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabadvancement .tabadvancementmain section .status.senator {
+  display: block;
+}
+.main .cohortadvancement.agente, .main .cohortadvancement.auriga, .main .cohortadvancement.decurion, .main .cohortadvancement.dux, .main .cohortadvancement.episcopus, .main .cohortadvancement.evocatus, .main .cohortadvancement.senator {
+  display: none;
+}
+.main input.playbooktoggle[value=agente] ~ .tabadvancement .tabadvancementmain section .cohortadvancement.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabadvancement .tabadvancementmain section .cohortadvancement.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabadvancement .tabadvancementmain section .cohortadvancement.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabadvancement .tabadvancementmain section .cohortadvancement.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabadvancement .tabadvancementmain section .cohortadvancement.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabadvancement .tabadvancementmain section .cohortadvancement.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabadvancement .tabadvancementmain section .cohortadvancement.senator {
+  display: block;
+}
+.main .experience.agente, .main .experience.auriga, .main .experience.decurion, .main .experience.dux, .main .experience.episcopus, .main .experience.evocatus, .main .experience.senator {
+  display: none;
+}
+.main input.playbooktoggle[value=agente] ~ .tabadvancement .tabadvancementmain section .experience.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabadvancement .tabadvancementmain section .experience.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabadvancement .tabadvancementmain section .experience.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabadvancement .tabadvancementmain section .experience.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabadvancement .tabadvancementmain section .experience.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabadvancement .tabadvancementmain section .experience.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabadvancement .tabadvancementmain section .experience.senator {
+  display: block;
+}
+.main .legacytext.agente, .main .legacytext.auriga, .main .legacytext.decurion, .main .legacytext.dux, .main .legacytext.episcopus, .main .legacytext.evocatus, .main .legacytext.senator {
+  display: none;
+}
+.main .freedom.senator {
+  display: none;
+  position: relative;
+}
+.main input.playbooktoggle[value=auriga] ~ .tabadvancement .tabadvancementmain section.freedom.auriga {
+  display: block;
+}
+.main input.playbooktoggle[value=agente] ~ .tabadvancement .tabadvancementmain section .legacytext.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabadvancement .tabadvancementmain section .legacytext.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabadvancement .tabadvancementmain section .legacytext.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabadvancement .tabadvancementmain section .legacytext.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabadvancement .tabadvancementmain section .legacytext.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabadvancement .tabadvancementmain section .legacytext.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabadvancement .tabadvancementmain section .legacytext.senator {
+  display: inline;
+}
+.main .intro.agente, .main .intro.auriga, .main .intro.decurion, .main .intro.dux, .main .intro.episcopus, .main .intro.evocatus, .main .intro.senator,
+.main .image.agente, .main .image.auriga, .main .image.decurion, .main .image.dux, .main .image.episcopus, .main .image.evocatus, .main .image.senator,
+.main .creatingnames.agente, .main .creatingnames.auriga, .main .creatingnames.decurion, .main .creatingnames.dux, .main .creatingnames.episcopus, .main .creatingnames.evocatus, .main .creatingnames.senator,
+.main .creatingdemeanour.agente, .main .creatingdemeanour.auriga, .main .creatingdemeanour.decurion, .main .creatingdemeanour.dux, .main .creatingdemeanour.episcopus, .main .creatingdemeanour.evocatus, .main .creatingdemeanour.senator,
+.main .creatingtraitsandbonds.agente, .main .creatingtraitsandbonds.auriga, .main .creatingtraitsandbonds.decurion, .main .creatingtraitsandbonds.dux, .main .creatingtraitsandbonds.episcopus, .main .creatingtraitsandbonds.evocatus, .main .creatingtraitsandbonds.senator, .main .creatingmovesandcohort.agente, .main .creatingmovesandcohort.auriga, .main .creatingmovesandcohort.decurion, .main .creatingmovesandcohort.dux, .main .creatingmovesandcohort.episcopus, .main .creatingmovesandcohort.evocatus, .main .creatingmovesandcohort.senator,
+.main .creatingambitions.agente, .main .creatingambitions.auriga, .main .creatingambitions.decurion, .main .creatingambitions.dux, .main .creatingambitions.episcopus, .main .creatingambitions.evocatus, .main .creatingambitions.senator, .main .creatingreputation.agente, .main .creatingreputation.auriga, .main .creatingreputation.decurion, .main .creatingreputation.dux, .main .creatingreputation.episcopus, .main .creatingreputation.evocatus, .main .creatingreputation.senator,
+.main .creatingpersonalties.agente, .main .creatingpersonalties.auriga, .main .creatingpersonalties.decurion, .main .creatingpersonalties.dux, .main .creatingpersonalties.episcopus, .main .creatingpersonalties.evocatus, .main .creatingpersonalties.senator, .main .creatingfamilia.agente, .main .creatingfamilia.auriga, .main .creatingfamilia.decurion, .main .creatingfamilia.dux, .main .creatingfamilia.episcopus, .main .creatingfamilia.evocatus, .main .creatingfamilia.senator {
+  display: none;
+}
+.main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .intro.agente, .main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .image.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .intro.auriga, .main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .image.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .intro.decurion, .main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .image.decurion,
+.main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .intro.evocatus, .main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .image.evocatus,
+.main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .creatingnames.agente, .main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .creatingdemeanour.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .creatingnames.auriga, .main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .creatingdemeanour.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .creatingnames.decurion, .main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .creatingdemeanour.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabplaybook .tabplaybookmain section .creatingnames.dux, .main input.playbooktoggle[value=dux] ~ .tabplaybook .tabplaybookmain section .creatingdemeanour.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabplaybook .tabplaybookmain section .creatingnames.episcopus, .main input.playbooktoggle[value=episcopus] ~ .tabplaybook .tabplaybookmain section .creatingdemeanour.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .creatingnames.evocatus, .main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .creatingdemeanour.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabplaybook .tabplaybookmain section .creatingnames.senator, .main input.playbooktoggle[value=senator] ~ .tabplaybook .tabplaybookmain section .creatingdemeanour.senator,
+.main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .creatingtraitsandbonds.agente, .main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .creatingmovesandcohort.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .creatingtraitsandbonds.auriga, .main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .creatingmovesandcohort.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .creatingtraitsandbonds.decurion, .main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .creatingmovesandcohort.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabplaybook .tabplaybookmain section .creatingtraitsandbonds.dux, .main input.playbooktoggle[value=dux] ~ .tabplaybook .tabplaybookmain section .creatingmovesandcohort.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabplaybook .tabplaybookmain section .creatingtraitsandbonds.episcopus, .main input.playbooktoggle[value=episcopus] ~ .tabplaybook .tabplaybookmain section .creatingmovesandcohort.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .creatingtraitsandbonds.evocatus, .main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .creatingmovesandcohort.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabplaybook .tabplaybookmain section .creatingtraitsandbonds.senator, .main input.playbooktoggle[value=senator] ~ .tabplaybook .tabplaybookmain section .creatingmovesandcohort.senator,
+.main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .creatingambitions.agente, .main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .creatingreputation.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .creatingambitions.auriga, .main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .creatingreputation.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .creatingambitions.decurion, .main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .creatingreputation.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabplaybook .tabplaybookmain section .creatingambitions.dux, .main input.playbooktoggle[value=dux] ~ .tabplaybook .tabplaybookmain section .creatingreputation.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabplaybook .tabplaybookmain section .creatingambitions.episcopus, .main input.playbooktoggle[value=episcopus] ~ .tabplaybook .tabplaybookmain section .creatingreputation.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .creatingambitions.evocatus, .main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .creatingreputation.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabplaybook .tabplaybookmain section .creatingambitions.senator, .main input.playbooktoggle[value=senator] ~ .tabplaybook .tabplaybookmain section .creatingreputation.senator,
+.main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .creatingpersonalties.agente, .main input.playbooktoggle[value=agente] ~ .tabplaybook .tabplaybookmain section .creatingfamilia.agente,
+.main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .creatingpersonalties.auriga, .main input.playbooktoggle[value=auriga] ~ .tabplaybook .tabplaybookmain section .creatingfamilia.auriga,
+.main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .creatingpersonalties.decurion, .main input.playbooktoggle[value=decurion] ~ .tabplaybook .tabplaybookmain section .creatingfamilia.decurion,
+.main input.playbooktoggle[value=dux] ~ .tabplaybook .tabplaybookmain section .creatingpersonalties.dux, .main input.playbooktoggle[value=dux] ~ .tabplaybook .tabplaybookmain section .creatingfamilia.dux,
+.main input.playbooktoggle[value=episcopus] ~ .tabplaybook .tabplaybookmain section .creatingpersonalties.episcopus, .main input.playbooktoggle[value=episcopus] ~ .tabplaybook .tabplaybookmain section .creatingfamilia.episcopus,
+.main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .creatingpersonalties.evocatus, .main input.playbooktoggle[value=evocatus] ~ .tabplaybook .tabplaybookmain section .creatingfamilia.evocatus,
+.main input.playbooktoggle[value=senator] ~ .tabplaybook .tabplaybookmain section .creatingpersonalties.senator, .main input.playbooktoggle[value=senator] ~ .tabplaybook .tabplaybookmain section .creatingfamilia.senator {
+  display: block;
+}
+.main .tabcharacter, .main .tabadvancement, .main .tabnotes, .main .tabplaybook {
+  display: none;
+}
+.main input.tabtoggle[value=tabcharacter] ~ .tabcharacter,
+.main input.tabtoggle[value=tabadvancement] ~ .tabadvancement,
+.main input.tabtoggle[value=tabnotes] ~ .tabnotes,
+.main input.tabtoggle[value=tabplaybook] ~ .tabplaybook {
+  display: block;
+}
+.main input.tabtoggle[value=tabcharacter] ~ .navigation .tabs .tab button[name=act_tabcharacter],
+.main input.tabtoggle[value=tabadvancement] ~ .navigation .tabs .tab button[name=act_tabadvancement],
+.main input.tabtoggle[value=tabnotes] ~ .navigation .tabs .tab button[name=act_tabnotes],
+.main input.tabtoggle[value=tabplaybook] ~ .navigation .tabs .tab button[name=act_tabplaybook] {
+  background-color: white;
+}
+.main .navigation .navigationplaybook, .main .navigation .tabs {
+  padding: 0 0 5px 0;
+}
+.main .navigation .navigationplaybook button, .main .navigation .tabs button {
+  margin: 3px 0;
+  text-transform: capitalize;
+}
+.main .header {
+  margin-bottom: 10px;
+}
+.main .description {
+  grid-area: description;
+}
+.main .description label:first-of-type {
+  margin-top: 0;
+}
+.main .description label {
+  margin: 35px 0 5px 0;
+}
+.main .description input[type=text] {
+  font-size: 12pt;
+  display: block;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid gray;
+  border-radius: 0;
+  margin-bottom: 5px;
+}
+.main .description input[type=text]:focus-visible {
+  outline: 0;
+}
+.main .description input[type=text].personalties {
+  width: 150px;
+  display: inline;
+  vertical-align: baseline;
+}
+.main .moves {
+  grid-area: moves;
+  line-height: 20px;
+}
+.main .moves span.heading3 {
+  display: block;
+  margin-bottom: 5px;
+}
+.main .moves .moveitem {
+  margin-top: -22px;
+}
+.main .moves .moveitem label {
+  display: inline;
+}
+.main .moves input.move {
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 0px;
+  margin-top: 20px;
+}
+.main .moves input.move:checked + .moveitem > label > span.movecheck {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Enduring.svg);
+}
+.main .moves label span.movecheck {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: text-bottom;
+  margin-bottom: -2px;
+  margin-right: 5px;
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle.svg);
+}
+.main .moves img.circleIcon {
+  margin: 0 5px -2px 5px;
+}
+.main .moves input.agente2custom {
+  opacity: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+  font-size: 12pt;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid gray;
+  margin: 5px 0;
+}
+.main .traits {
+  grid-area: traits;
+  padding-bottom: 20px;
+}
+.main .traits span.heading6 + label:first-of-type {
+  margin-top: 6px;
+}
+.main .traits .circleIcon {
+  margin-bottom: -2px;
+}
+.main .traits label {
+  margin-bottom: -2px;
+  margin-top: 6px;
+}
+.main .traits span.descriptor1 {
+  margin-left: 6px;
+}
+.main .bonds {
+  grid-area: bonds;
+  padding-bottom: 20px;
+}
+.main .bonds .circleIcon {
+  margin-bottom: -2px;
+}
+.main .bonds label {
+  margin-bottom: -2px;
+  margin-top: 6px;
+}
+.main .bonds span.descriptor1 {
+  margin-left: 6px;
+}
+.main .bonds .repcontrol {
+  margin-top: 20px;
+}
+.main .hold {
+  grid-area: hold;
+  padding-bottom: 20px;
+}
+.main .hold .circleIcon {
+  margin-bottom: -2px;
+}
+.main .hold label {
+  margin-bottom: -2px;
+  margin-top: 6px;
+}
+.main .hold span.descriptor1 {
+  margin-left: 6px;
+}
+.main .hold .repcontrol {
+  margin-top: 20px;
+}
+.main .playerBonds {
+  grid-area: playerBonds;
+  padding-bottom: 20px;
+}
+.main .playerBonds .circleIcon {
+  margin-bottom: -2px;
+}
+.main .playerBonds label {
+  margin-bottom: -2px;
+  margin-top: 6px;
+}
+.main .playerBonds span.descriptor1 {
+  margin-left: 6px;
+}
+.main .playerBonds .repcontrol {
+  margin-top: 20px;
+}
+.main .improvement {
+  grid-area: improvement;
+  position: relative;
+}
+.main .resilience {
+  grid-area: resilience;
+  position: relative;
+}
+.main .pathos {
+  grid-area: pathos;
+}
+.main .trauma {
+  grid-area: trauma;
+  position: relative;
+}
+.main .cohort {
+  grid-area: cohort;
+  position: relative;
+}
+.main .cohort input[type=text] {
+  font-size: 12pt;
+  display: block;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid gray;
+  border-radius: 0;
+  margin-bottom: 5px;
+}
+.main .cohort input[type=text]:focus-visible {
+  outline: 0;
+}
+.main .cohort input[type=text].personalties {
+  width: 150px;
+  display: inline;
+  vertical-align: baseline;
+}
+.main .cohort .cohortprogress {
+  position: relative;
+  margin: 20px 0 15px 0;
+}
+.main .cohort .cohortprogress input[type=radio].progressbar {
+  top: 1px;
+}
+.main .cohort .cohortprogress input[type=radio].progressbar.progressbarempty {
+  width: 0;
+}
+.main .cohort .cohortprogress span.progressbar.progressbarempty {
+  width: 0;
+}
+.main .cohort .cohortnotes {
+  margin-top: 15px;
+}
+.main .cohort .cohortnotes span.heading7 {
+  display: block;
+}
+.main .conditionwrap {
+  display: inline-block;
+  width: 36%;
+}
+.main .conditionwrap:nth-child(odd) {
+  text-align: right;
+}
+.main .conditionwrap:nth-child(even) {
+  text-align: left;
+}
+.main .conditions span.heading3 {
+  margin-bottom: 15px;
+  display: block;
+}
+.main .conditions ul {
+  margin: 0;
+}
+.main .conditions .conditionpair {
+  grid-area: conditions;
+  display: block;
+  margin-right: 0px;
+  text-align: center;
+}
+.main .conditions .conditionpair .condition:nth-child(odd) label {
+  text-align: right;
+}
+.main .conditions .conditionpair .condition:nth-child(even) label {
+  text-align: left;
+}
+.main .conditions .conditionpair .condition {
+  display: inline-block;
+  position: relative;
+  margin: 0 15px 0 10px;
+}
+.main .conditions .conditionpair .condition label {
+  margin: 0;
+  padding: 0;
+}
+.main .conditions .conditionpair .condition input[type=checkbox], .main .conditions .conditionpair .condition input[type=radio] {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  left: 0;
+}
+.main .conditions .conditionpair .condition input[value="0"] {
+  z-index: 3;
+}
+.main .conditions .conditionpair .condition input[value="1"], .main .conditions .conditionpair .condition input[value="2"] {
+  z-index: 2;
+}
+.main .conditions .conditionpair .condition input[value="0"]:checked ~ input[value="1"] {
+  z-index: 5;
+}
+.main .conditions .conditionpair .condition input[value="1"]:checked ~ input[value="2"] {
+  z-index: 5;
+}
+.main .conditions .conditionpair .condition input[value="1"]:checked ~ label {
+  color: red;
+}
+.main .conditions .conditionpair .condition input[value="2"]:checked ~ label {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+.main .tabadvancementmain {
+  line-height: 23px;
+}
+.main .tabadvancementmain p {
+  line-height: 23px;
+}
+.main .tabadvancementmain .section {
+  margin-bottom: 10px;
+}
+.main .tabadvancementmain .status span.heading3, .main .tabadvancementmain .cohortadvancement span.heading3, .main .tabadvancementmain .experience span.heading3, .main .tabadvancementmain .legacy span.heading3 {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.main .tabadvancementmain .status span.heading7, .main .tabadvancementmain .cohortadvancement span.heading7, .main .tabadvancementmain .experience span.heading7, .main .tabadvancementmain .legacy span.heading7 {
+  display: inline-block;
+  margin: 20px 0 5px 0;
+}
+.main .tabadvancementmain .status span.highlight4, .main .tabadvancementmain .cohortadvancement span.highlight4, .main .tabadvancementmain .experience span.highlight4, .main .tabadvancementmain .legacy span.highlight4 {
+  display: inline-block;
+  margin-top: 10px;
+}
+.main .tabadvancementmain .cohortadvancement .cohortadvancementline, .main .tabadvancementmain .experience .cohortadvancementline {
+  line-height: 27px;
+}
+.main .tabadvancementmain .cohortadvancement input.stackcheckbox, .main .tabadvancementmain .experience input.stackcheckbox {
+  height: 20px;
+  width: 20px;
+  opacity: 0;
+}
+.main .tabadvancementmain .cohortadvancement input.stackcheckbox + span.stackcheckbox, .main .tabadvancementmain .experience input.stackcheckbox + span.stackcheckbox {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  margin: 0 7px -7px -20px;
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Circle.svg);
+}
+.main .tabadvancementmain .cohortadvancement input.stackcheckbox:checked + span.stackcheckbox, .main .tabadvancementmain .experience input.stackcheckbox:checked + span.stackcheckbox {
+  background-image: url(https://imgsrv.roll20.net?src=https%3A//raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/Enduring.svg);
+}
+.main .tabadvancementmain .experience .experienceline {
+  line-height: 27px;
+}
+.main .tabadvancementmain .experience .experienceline input.stackcheckbox + span.stackcheckbox {
+  margin: 0 4px -7px -20px;
+}
+.main .tabadvancementmain .experience .experienceline .experiencelabel {
+  display: inline;
+  margin-left: 3px;
+}
+.main .tabadvancementmain .legacy span.heading3 {
+  display: block;
+}
+.main .tabplaybook .tabplaybookmain span.heading3, .main .tabplaybook .tabplaybookmain span.heading7 {
+  display: block;
+}
+.main .tabplaybook .tabplaybookmain span.heading7 {
+  margin: 0 0 5px 0;
+}
+.main .notes {
+  grid-area: notes;
+}
+/*----------- Media Queries --------------------*/
+@media only screen and (min-width: 530px) {
+  .main {
+    /*------------- Section-specific CSS -------------*/
+  }
+  .main .tabcharactermain {
+    margin-bottom: 10px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr max-content auto 90px 90px 300px;
+    grid-template-areas: "description   moves" "traits   bonds" "hold   playerBonds" "improvement   resilience" "pathos trauma" "cohort conditions";
+  }
+  .main .section {
+    width: auto;
+    margin-bottom: 0;
+  }
+  .main .navigation, .main .header, .main .notes, .main .image, .main .intro, .main .creatingnames, .main .creatingdemeanour, .main .creatingtraitsandbonds, .main .creatingmovesandcohort, .main .creatingambitions,
+.main .creatingreputation, .main .creatingpersonalties, .main .creatingfamilia {
+    margin-bottom: 10px;
+  }
+  .main .notes textarea {
+    width: 98%;
+    height: 85%;
+  }
+}
+@media only screen and (min-width: 905px) {
+  .main .tabcharactermain {
+    grid-template-rows: 1fr max-content auto 90px 90px 300px;
+  }
+}

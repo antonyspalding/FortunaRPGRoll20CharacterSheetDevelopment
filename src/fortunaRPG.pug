@@ -1,0 +1,312 @@
+//- include pugData
+- 
+  const translation = locals.translation,
+    traitlist = locals.data.traitlist,
+    bondlist = locals.data.bondlist,
+    conditionlist = locals.data.conditionlist,
+    playbooks = locals.data.playbooks,
+    imagesrc = "https://raw.githubusercontent.com/antonyspalding/FortunaCharacterSheetRoll20/main/images/"
+
+mixin threestackradio(item)
+  label
+        img.circleIcon(src=imagesrc + item.image + '.svg')
+        - var threestackradioouter = 1;
+        while threestackradioouter < 5
+          label.threestackradio
+            img.circleIcon.threestackradio(src=imagesrc + "Circle.svg")
+            - var threestackradioinner = 0;
+            while threestackradioinner < 3
+              input.threestackradio(name='attr_' + item.attribute + threestackradioouter type="radio" value=threestackradioinner)
+              span
+              - threestackradioinner++
+            - threestackradioouter++
+        span.descriptor1(data-i18n=item.title)= translation[item.title]
+
+mixin personalties(playbook) 
+  span.descriptor3(class=playbook.code)
+    each personaltie in playbook.personalties
+      span.peronalties.pro(data-i18n=personaltie.pro)=translation[personaltie.pro]
+      input.personalties(name="attr_" + personaltie.attribute type="text" spellcheck="false")
+      span.personalties.epi(data-i18n=personaltie.epi)=translation[personaltie.epi]
+      br
+
+mixin progressbar(attribute, length)
+  input.progressbar.progressbarempty(name='attr_' + attribute type="radio" value="0" checked="checked")
+  span.progressbar.progressbarempty
+  - var progressbarcounter = 1;
+  while progressbarcounter < length 
+    input.progressbar(name='attr_' + attribute type="radio" value=progressbarcounter++)
+    if attribute=="resilience" && progressbarcounter==4
+      span.progressbar.threshold
+        img.circleIcon(src=imagesrc + "Resilience_Threshold_ProgressBar.svg")
+    //-else if attribute=="resilience" && progressbarcounter==6
+    //-  span.progressbar.thresholdfinal
+    //-    img.circleIcon(src=imagesrc + "Resilience_Threshold.svg")
+    else 
+      span.progressbar
+
+mixin conditionpair(condition)
+  li.conditionpair
+    div.condition
+      input(name='attr_condition' + condition.negative.attribute type="radio" value="0")
+      input(name='attr_condition' + condition.negative.attribute type="radio" value="1")
+      input(name='attr_condition' + condition.negative.attribute type="radio" value="2")
+      label(data-i18n=condition.negative.title)=translation[condition.negative.title]
+    | |
+    div.condition
+      input(name='attr_condition' + condition.positive.attribute type="radio" value="0")
+      input(name='attr_condition' + condition.positive.attribute type="radio" value="1")
+      input(name='attr_condition' + condition.positive.attribute type="radio" value="2")
+      label(data-i18n=condition.positive.title)=translation[condition.positive.title]
+
+main.main
+  input.tabtoggle(type="hidden" name="attr_tab" value="tabcharacter")
+  input.playbooktoggle(type="hidden" name="attr_playbook" value="evocatus")
+  section.navigation.section
+    .navigationplaybook
+      | Playbook : 
+      each playbook in playbooks
+        button(type="action" name='act_' + playbook.code data-i18n=playbook.title)=translation[playbook.title]
+    .tabs
+      .tab
+        | Tab : 
+        button(type="action" name="act_tabcharacter" data-i18n='general_tab_character') #{translation["general_tab_character"]}
+        button(type="action" name="act_tabadvancement" data-i18n='general_tab_advancement') #{translation["general_tab_advancement"]}
+        button(type="action" name="act_tabnotes" data-i18n='general_tab_notes') #{translation["general_tab_notes"]}
+        button(type="action" name="act_tabplaybook" data-i18n='general_tab_playbook') #{translation["general_tab_playbook"]}
+  section.header.section
+    each playbook in playbooks
+      img.playbookHeaderImage(class=playbook.code src=imagesrc + playbook.code + '_Header.svg' alt=translation['general_header_alt_1'] + translation[playbook.title] + translation["general_header_alt_2"])
+  .tabcharacter
+    .tabcharactermain
+      section.description.section
+        label.heading3(data-i18n='character_name')=translation.character_name
+        input(name="attr_name" type="text" spellcheck="false")
+        label.heading3(data-i18n='character_demeanour')=translation.character_demeanour
+        input(name="attr_demeanour1" type="text" spellcheck="false")
+        input(name="attr_demeanour2" type="text" spellcheck="false")
+        label.heading3(data-i18n='character_ambitions')=translation.character_ambitions
+        input(name="attr_ambitions1" type="text" spellcheck="false")
+        input(name="attr_ambitions2" type="text" spellcheck="false")
+        input(name="attr_ambitions3" type="text" spellcheck="false")
+        label.heading3(data-i18n='character_reputations')=translation.character_reputations
+        input(name="attr_reputations1" type="text" spellcheck="false")
+        input(name="attr_reputations2" type="text" spellcheck="false")
+        input(name="attr_reputations3" type="text" spellcheck="false")
+        label.heading3(data-i18n='character_personal_ties')=translation.character_personal_ties
+        each playbook in playbooks 
+          +personalties(playbook) 
+        input(name="attr_personaltiegeneral1" type="text" spellcheck="false")
+        input(name="attr_personaltiegeneral2" type="text" spellcheck="false")
+      section.moves.section 
+        span.heading3(data-i18n='character_moves')=translation["character_moves"] 
+        include moves.pug
+      section.traits.section
+        span.heading6(data-i18n='character_traits')=translation["character_traits"] 
+        each trait in traitlist
+          +threestackradio(trait)
+      section.bonds.section 
+        span.heading6(data-i18n='character_bonds')=translation["character_bonds"]
+        each bond in bondlist 
+          +threestackradio(bond)
+      section.hold.section 
+        span.heading6(data-i18n='character_hold')=translation["character_hold"]
+        fieldset.repeating_playerHold
+          label
+          img.circleIcon(src=imagesrc + 'Bond_Personal.svg')
+          - var threestackradioouter = 1;
+          while threestackradioouter < 5
+            label.threestackradio
+              img.circleIcon.threestackradio(src=imagesrc + "Circle.svg")
+              - var threestackradioinner = 0;
+              while threestackradioinner < 3
+                input.threestackradio(name='attr_customplayerhold' + threestackradioouter + 'slot' type="radio" value=threestackradioinner checked=(threestackradioinner == 0 ? 'checked' : false))
+                span
+                - threestackradioinner++
+              - threestackradioouter++
+          input(name="attr_customplayerholdtitle" type="text" spellcheck="false")
+      section.playerBonds.section
+        span.heading6(data-i18n='character_playerBonds')=translation["character_playerBonds"]
+        fieldset.repeating_playerBonds
+          label
+          img.circleIcon(src=imagesrc + 'Bond_Personal.svg')
+          - var threestackradioouter = 1;
+          while threestackradioouter < 5
+            label.threestackradio
+              img.circleIcon.threestackradio(src=imagesrc + "Circle.svg")
+              - var threestackradioinner = 0;
+              while threestackradioinner < 3
+                input.threestackradio(name='attr_customplayerbond' + threestackradioouter + 'slot' type="radio" value=threestackradioinner checked=(threestackradioinner == 0 ? 'checked' : false))
+                span
+                - threestackradioinner++
+              - threestackradioouter++
+          input(name="attr_customplayerbondtitle" type="text" spellcheck="false")
+      section.improvement.section 
+        span.heading4(data-i18n='character_improvement')=translation["character_improvement"]
+        .prgressbarcontainer
+          +progressbar("improvement", 9)
+          button(type="action" name="act_improvementempty") 
+      section.resilience.section 
+        span.heading5(data-i18n='character_resilience')=translation["character_resilience"]
+        .prgressbarcontainer
+          +progressbar("resilience", 6)
+          button(type="action" name="act_resilienceempty") 
+      section.pathos.section 
+        span.heading4(data-i18n='character_pathos')=translation["character_pathos"]
+        br
+        - var threestackradioouter = 1;
+        while threestackradioouter < 11
+          label.threestackradio
+            img.circleIcon.threestackradio(src=imagesrc + "Circle_ProgressBar.svg")
+            - var threestackradioinner = 0;
+            while threestackradioinner < 3
+              input.threestackradio(name='attr_pathos' + threestackradioouter type="radio" value=threestackradioinner)
+              span
+              - threestackradioinner++
+            - threestackradioouter++
+      section.trauma.section 
+        span.heading3(data-i18n='character_trauma')=translation["character_trauma"]
+        .prgressbarcontainer
+          +progressbar("trauma", 4)
+          button(type="action" name="act_traumaempty") 
+      section.cohort.section 
+        .cohort.agente 
+          span.heading3(data-i18n='character_cohort_gang')=translation["character_cohort_gang"]
+          input(name="attr_cohortagentename" type="text" spellcheck="false")
+          .cohortprogress
+            +progressbar("gang", 5)
+            button(type="action" name="act_gangempty") 
+          .cohortnotes
+            span.heading7(data-i18n='character_cohort_notes')=translation["character_cohort_notes"]
+            textarea(name="attr_cohortagentenotes")
+        .cohort.auriga 
+          span.heading3(data-i18n='character_cohort_fans')=translation["character_cohort_fans"]
+          input(name="attr_cohortauriganame" type="text" spellcheck="false")
+          //- +progressbar("fans", 5)
+          //- button(type="action" name="act_fansempty") 
+          .cohortnotes
+            span.heading7(data-i18n='character_cohort_notes')=translation["character_cohort_notes"]
+            textarea(name="attr_cohortauriganotes")
+        .cohort.decurion
+          span.heading3(data-i18n='character_cohort')=translation["character_cohort"]
+          input(name="attr_cohortdecurionname" type="text" spellcheck="false")
+          //- +progressbar("cohortdecurion", 5)
+          //- button(type="action" name="act_cohortdecurionempty") 
+          .cohortnotes
+            span.heading7(data-i18n='character_cohort_notes')=translation["character_cohort_notes"]
+            textarea(name="attr_cohortdecurionnotes")
+        .cohort.dux 
+          span.heading3(data-i18n='character_cohort_fans')=translation["character_cohort_fans"]
+          input(name="attr_cohortduxname" type="text" spellcheck="false")
+          //- +progressbar("fans", 5)
+          //- button(type="action" name="act_fansempty") 
+          .cohortnotes
+            span.heading7(data-i18n='character_cohort_notes')=translation["character_cohort_notes"]
+            textarea(name="attr_cohortduxnotes")
+        .cohort.episcopus 
+          span.heading3(data-i18n='character_cohort_fans')=translation["character_cohort_fans"]
+          input(name="attr_cohortepiscopusname" type="text" spellcheck="false")
+          //- +progressbar("fans", 5)
+          //- button(type="action" name="act_fansempty") 
+          .cohortnotes
+            span.heading7(data-i18n='character_cohort_notes')=translation["character_cohort_notes"]
+            textarea(name="attr_cohortepiscopusnotes")
+        .cohort.evocatus
+          span.heading3(data-i18n='character_cohort')=translation["character_cohort"]
+          input(name="attr_cohortevocatusname" type="text" spellcheck="false")
+          //- +progressbar("cohortevocatus", 5)
+          //- button(type="action" name="act_cohortevocatusempty") 
+          .cohortnotes
+            span.heading7(data-i18n='character_cohort_notes')=translation["character_cohort_notes"]
+            textarea(name="attr_cohortevocatusnotes")
+        .cohort.senator 
+          span.heading3(data-i18n='character_cohort_fans')=translation["character_cohort_fans"]
+          input(name="attr_cohortsenatorname" type="text" spellcheck="false")
+          //- +progressbar("fans", 5)
+          //- button(type="action" name="act_fansempty") 
+          .cohortnotes
+            span.heading7(data-i18n='character_cohort_notes')=translation["character_cohort_notes"]
+            textarea(name="attr_cohortsenatornotes")
+      section.conditions.section 
+        span.heading3(data-i18n='character_conditions')=translation["character_conditions"]
+        ul 
+          each condition in conditionlist 
+            +conditionpair(condition)
+  .tabadvancement 
+    .tabadvancementmain 
+      section.status.section
+        .status.agente 
+          span.heading3(data-i18n='advancement_status_agente') #{translation["advancement_status_agente"]}
+          p(data-i18n='playbook_agente_status_part1') #{translation["playbook_agente_status_part1"]}
+        .status.auriga 
+          span.heading3(data-i18n='advancement_status_slave') #{translation["advancement_status_slave"]}
+          p(data-i18n='playbook_auriga_status_part1') #{translation["playbook_auriga_status_part1"]}
+        .status.decurion 
+          span.heading3(data-i18n='advancement_status_freeborn') #{translation["advancement_status_freeborn"]}
+          p(data-i18n='playbook_decurion_status_part1') #{translation["playbook_decurion_status_part1"]}
+        .status.dux 
+          span.heading3(data-i18n='advancement_status_slave') #{translation["advancement_status_slave"]}
+          p(data-i18n='playbook_dux_status_part1') #{translation["playbook_dux_status_part1"]}
+        .status.episcopus 
+          span.heading3(data-i18n='advancement_status_slave') #{translation["advancement_status_slave"]}
+          p(data-i18n='playbook_episcopus_status_part1') #{translation["playbook_episcopus_status_part1"]}
+        .status.evocatus
+          span.heading3(data-i18n='advancement_status_freeborn') #{translation["advancement_status_freeborn"]}
+          p(data-i18n='playbook_evocatus_status_part1') #{translation["playbook_evocatus_status_part1"]}
+        .status.senator 
+          span.heading3(data-i18n='advancement_status_slave') #{translation["advancement_status_slave"]}
+          p(data-i18n='playbook_senator_status_part1') #{translation["playbook_senator_status_part1"]}
+      include advancement.pug
+        
+          
+      section.legacy.section 
+        span.heading3(data-i18n='advancement_legacy') #{translation["advancement_legacy"]}
+        span.descriptor2(data-i18n='advancement_legacymove') #{translation["advancement_legacymove"]}
+        |  | 
+        .legacytext.agente
+          | 
+          span(data-i18n='playbook_agente_legacy_part1') #{translation["playbook_agente_legacy_part1"]}
+          span.highlight2(data-i18n='playbook_agente_legacy_part2') #{translation["playbook_agente_legacy_part2"]}
+          | 
+          span(data-i18n='playbook_agente_legacy_part3') #{translation["playbook_agente_legacy_part3"]}
+        .legacytext.auriga 
+          | 
+          span(data-i18n='playbook_auriga_legacy_part1') #{translation["playbook_auriga_legacy_part1"]}  
+        .legacytext.decurion 
+          | 
+          span(data-i18n='playbook_decurion_legacy_part1') #{translation["playbook_decurion_legacy_part1"]}
+        .legacytext.dux 
+          | 
+          span(data-i18n='playbook_dux_legacy_part1') #{translation["playbook_dux_legacy_part1"]} 
+        .legacytext.episcopus 
+          | 
+          span(data-i18n='playbook_episcopus_legacy_part1') #{translation["playbook_episcopus_legacy_part1"]} 
+        .legacytext.evocatus 
+          | 
+          span(data-i18n='playbook_evocatus_legacy_part1') #{translation["playbook_evocatus_legacy_part1"]}
+          span.highlight2 #{translation["playbook_evocatus_legacy_part2"]}
+          | 
+          span(data-i18n='playbook_evocatus_legacy_part3') #{translation["playbook_evocatus_legacy_part3"]}
+        .legacytext.senator 
+          | 
+          span(data-i18n='playbook_senator_legacy_part1') #{translation["playbook_senator_legacy_part1"]} 
+      section.freedom.auriga.section
+        span.heading3(data-i18n='playbook_auriga_freedom') #{translation["playbook_auriga_freedom"]}
+        +progressbar("freedom", 9)
+        button(type="action" name="act_freedomempty") 
+  .tabnotes
+    section.notes.section 
+      span.heading5(data-i18n='general_tab_notes') #{translation["general_tab_notes"]}
+      textarea(name="attr_notes" spellcheck="false")
+  .tabplaybook 
+    .tabplaybookmain
+      include playbook.pug
+  section.footer.section 
+    span(data-i18n='general_copyright') #{translation["general_copyright"]}
+
+
+|
+|
+|
+script(type='text/worker')
+  != locals.workers
